@@ -10,7 +10,7 @@ public class listVirtualMachines {
     HashMap<String,String> options = CLI.args_to_options(args);
     Document vm_list_doc = client.listVirtualMachines(options);
  
-    String elements[] = {"id", "displayname", "state", "domain", "nic/ipaddress"};
+    String elements[] = {"id", "displayname", "state", "domain", "nic/ipaddress", "templatename"};
 
     CLI.printDocument(vm_list_doc, "//virtualmachine", elements);   
   }

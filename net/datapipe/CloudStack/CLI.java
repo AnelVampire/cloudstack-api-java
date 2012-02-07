@@ -28,8 +28,12 @@ public class CLI {
   }
 
   public static HashMap<String,String> args_to_options(String args[]) {
+    return args_to_options(args,0);
+  }
+
+  public static HashMap<String,String> args_to_options(String args[], int offset) {
     HashMap<String,String> options = new HashMap<String,String>();
-    for(int i = 0; i < args.length; i++) {
+    for(int i = offset; i < args.length; i++) {
       String arg_options[] = args[i].split("=", 2);
       if(arg_options.length == 2) {
         options.put(arg_options[0], arg_options[1]);

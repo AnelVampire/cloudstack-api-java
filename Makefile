@@ -6,6 +6,12 @@ OBJECTS += net/datapipe/CloudStack/listIsos.class
 OBJECTS += net/datapipe/CloudStack/authorizeSecurityGroupIngress.class
 OBJECTS += net/datapipe/CloudStack/queryAsyncJobResult.class
 OBJECTS += net/datapipe/CloudStack/listZones.class
+OBJECTS += net/datapipe/CloudStack/stopVirtualMachine.class
+OBJECTS += net/datapipe/CloudStack/startVirtualMachine.class
+OBJECTS += net/datapipe/CloudStack/createTemplate.class
+OBJECTS += net/datapipe/CloudStack/listOsTypes.class
+OBJECTS += net/datapipe/CloudStack/listSnapshots.class
+OBJECTS += net/datapipe/CloudStack/listAsyncJobs.class
 
 all: CloudStack.jar
 

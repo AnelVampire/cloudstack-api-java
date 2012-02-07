@@ -11,7 +11,7 @@ public class listTemplates {
     CloudStack client = CLI.factory();
     Document template_list_doc = client.listTemplates(filter,null);
 
-    String elements[] = {"id", "displaytext", "name", "hypervisor", "domain", "isready"};
+    String elements[] = {"id", "displaytext", "name", "hypervisor", "isready", "ispublic"};
 
     CLI.printDocument(template_list_doc, "//template", elements);
   }

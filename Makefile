@@ -3,6 +3,9 @@ OBJECTS += net/datapipe/CloudStack/CLI.class
 OBJECTS += net/datapipe/CloudStack/listVirtualMachines.class
 OBJECTS += net/datapipe/CloudStack/listTemplates.class
 OBJECTS += net/datapipe/CloudStack/listIsos.class
+OBJECTS += net/datapipe/CloudStack/authorizeSecurityGroupIngress.class
+OBJECTS += net/datapipe/CloudStack/queryAsyncJobResult.class
+OBJECTS += net/datapipe/CloudStack/listZones.class
 
 all: CloudStack.jar
 

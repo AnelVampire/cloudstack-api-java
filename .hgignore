@@ -1,2 +1,3 @@
 ^CloudStack.jar
 \.class$
+^secrets$

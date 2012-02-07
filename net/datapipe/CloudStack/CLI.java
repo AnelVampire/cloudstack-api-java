@@ -71,4 +71,17 @@ public class CLI {
       System.out.println("");
     }
   }
+
+  public static void printSomething(Document reply) throws XPathExpressionException {
+    XPathFactory factory = XPathFactory.newInstance();
+    XPath xpath = factory.newXPath();
+
+    System.out.println("root element = "+reply.getDocumentElement().getNodeName());
+    XPathExpression xp_property = xpath.compile("/*/*");
+    NodeList root_items = (NodeList)xp_property.evaluate(reply, XPathConstants.NODESET);
+    for (int i = 0; i < root_items.getLength(); i++) {
+      Node item = root_items.item(i);
+      System.out.println("sub element = "+item.getNodeName());
+    }
+  }
 }

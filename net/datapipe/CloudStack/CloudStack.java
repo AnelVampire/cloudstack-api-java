@@ -14,6 +14,11 @@ import javax.crypto.spec.SecretKeySpec;
 import javax.xml.bind.DatatypeConverter;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.DocumentBuilder;
+import javax.xml.xpath.XPath;
+import javax.xml.xpath.XPathFactory;
+import javax.xml.xpath.XPathExpression;
+import javax.xml.xpath.XPathConstants;
+import javax.xml.xpath.XPathExpressionException;
 
 import org.w3c.dom.Document;
 
@@ -754,9 +759,10 @@ public class CloudStack {
   private Document executeGet(HttpMethod method) throws HttpException, IOException, Exception{
     HttpClient client = new HttpClient();
 
-    Document response;
+    Document response = null;
     client.executeMethod(method);
     response = handleResponse(method.getResponseBodyAsStream());
+//    System.out.println(method.getResponseBodyAsString());
 
     //clean up the connection resources
     method.releaseConnection();
@@ -775,11 +781,20 @@ public class CloudStack {
     DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
     Document doc = dBuilder.parse(ResponseBody);
 
-    if(doc.getDocumentElement().getNodeName().equals("errorresponse")) {
-      throw new CloudStackException(
-		      doc.getElementsByTagName("errorcode").item(0).getChildNodes().item(0).getNodeValue(),
-		      doc.getElementsByTagName("errortext").item(0).getChildNodes().item(0).getNodeValue()
-		      );
+    XPathFactory factory = XPathFactory.newInstance();
+    XPath xpath = factory.newXPath();
+
+    try {
+      XPathExpression error_code_path = xpath.compile("/*/errorcode/text()");
+      XPathExpression error_text_path = xpath.compile("/*/errortext/text()");
+
+      String error_code = (String)error_code_path.evaluate(doc, XPathConstants.STRING);
+      String error_text = (String)error_text_path.evaluate(doc, XPathConstants.STRING);
+      if(error_code.length() > 0) {
+        throw new CloudStackException(error_code, error_text);
+      }
+    } catch(XPathExpressionException e) {
+      // ignore, should never happen
     }
 
     return doc;

@@ -12,6 +12,13 @@ OBJECTS += net/datapipe/CloudStack/createTemplate.class
 OBJECTS += net/datapipe/CloudStack/listOsTypes.class
 OBJECTS += net/datapipe/CloudStack/listSnapshots.class
 OBJECTS += net/datapipe/CloudStack/listAsyncJobs.class
+OBJECTS += net/datapipe/CloudStack/listServiceOfferings.class
+OBJECTS += net/datapipe/CloudStack/deployVirtualMachine.class
+OBJECTS += net/datapipe/CloudStack/listInstanceGroups.class
+OBJECTS += net/datapipe/CloudStack/listSSHKeyPairs.class
+OBJECTS += net/datapipe/CloudStack/listSecurityGroups.class
+OBJECTS += net/datapipe/CloudStack/listNetworks.class
+OBJECTS += net/datapipe/CloudStack/listNetworkOfferings.class
 
 all: CloudStack.jar
 

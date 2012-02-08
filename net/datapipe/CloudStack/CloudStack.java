@@ -761,8 +761,8 @@ public class CloudStack {
 
     Document response = null;
     client.executeMethod(method);
-    response = handleResponse(method.getResponseBodyAsStream());
 //    System.out.println(method.getResponseBodyAsString());
+    response = handleResponse(method.getResponseBodyAsStream());
 
     //clean up the connection resources
     method.releaseConnection();

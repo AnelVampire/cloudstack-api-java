@@ -50,6 +50,12 @@ public class CLI {
     XPath xpath = factory.newXPath();
     XPathExpression expr = xpath.compile(items);
 
+    XPathExpression count_xp = xpath.compile("//count/text()");
+    String count = (String)count_xp.evaluate(reply, XPathConstants.STRING);
+    if(count.length() > 0) {
+      System.out.println("Count = "+count);
+    }
+
     for(int i = 0; i < properties.length; i++) {
       if(i > 0) {
         System.out.print("\t");

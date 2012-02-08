@@ -1,0 +1,12 @@
+#!/bin/sh
+
+if [ -z "$1" ]; then
+  echo need jobid
+  exit 1
+fi
+
+jobid=$1
+
+while ./queryAsyncJobResult $jobid; do
+  sleep 30
+done

@@ -13,7 +13,7 @@ public class queryAsyncJobResult {
     CloudStack client = CLI.factory();
     if(args.length == 0) {
       System.out.println("I need a jobid");
-      System.exit(1);
+      System.exit(255);
     }
     String jobid = args[0];
     Document job_result = client.queryAsyncJobResult(jobid);
@@ -32,11 +32,19 @@ public class queryAsyncJobResult {
     } else if(jobstatus.equals("0")) {
       System.out.print(" still running");
     } else if(jobstatus.equals("2")) {
-      System.out.print(" failed");
+      System.out.println(" failed");
+      XPathExpression errorcode_xp = xpath.compile("/queryasyncjobresultresponse/jobresult/errorcode/text()");
+      XPathExpression errortext_xp = xpath.compile("/queryasyncjobresultresponse/jobresult/errortext/text()");
+      String errorcode = (String)errorcode_xp.evaluate(job_result, XPathConstants.STRING);
+      String errortext = (String)errortext_xp.evaluate(job_result, XPathConstants.STRING);
+      if(errorcode.length() > 0 || errortext.length() > 0) {
+        System.out.print("errorcode = "+errorcode+"  errortext = "+errortext);
+      }
     } else {
       System.out.print(" unknown status = "+jobstatus);
     }
    
     System.out.println("");
+    System.exit(Integer.parseInt(jobstatus));
   }
 }

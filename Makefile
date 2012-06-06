@@ -24,8 +24,12 @@ OBJECTS += net/datapipe/CloudStack/createVolume.class
 OBJECTS += net/datapipe/CloudStack/attachVolume.class
 OBJECTS += net/datapipe/CloudStack/listVolumes.class
 OBJECTS += net/datapipe/CloudStack/deleteVolume.class
+OBJECTS += net/datapipe/CloudStack/listCapabilities.class
 
 all: CloudStack.jar
+
+clean:
+	rm -f $(OBJECTS) CloudStack.jar
 
 CloudStack.jar: $(OBJECTS)
 	jar cf CloudStack.jar net/datapipe/CloudStack/*.class

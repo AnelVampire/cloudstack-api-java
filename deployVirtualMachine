@@ -4,4 +4,4 @@
 # SERVICEOFFERINGID=41 TEMPLATEID=494 ZONEID=5
 # ./deployVirtualMachine $SERVICEOFFERINGID $TEMPLATEID $ZONEID displayname=newtest group=180 name=newtestvm keypair=dan_drown_key securitygroupids=238,239
 
-java -cp /usr/share/java/commons-httpclient.jar:/usr/share/java/commons-logging.jar:/usr/share/java/commons-codec.jar:/usr/share/java/xml-commons-apis.jar:CloudStack.jar net.datapipe.CloudStack.deployVirtualMachine $*
+java -cp /usr/share/java/commons-httpclient.jar:/usr/share/java/commons-logging.jar:/usr/share/java/commons-codec.jar:/usr/share/java/xml-commons-apis.jar:CloudStack.jar net.datapipe.CloudStack.deployVirtualMachine "$@"

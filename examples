@@ -1,0 +1,23 @@
+listing all centos os types:
+./listOsTypes oscategoryid=1
+
+creating a template:
+./createTemplate "dandev+2/15/2012" dandev+2/15/2012 137 bits=64 isfeatured=false ispublic=false passwordenabled=true snapshotid=37786
+
+waiting for a job (like creating a template) to finish:
+./wait-job $JOBID
+
+list all personal templates
+./listTemplates self
+
+creating a virtual machine from a template
+./deployVirtualMachine 41 514 5 displayname=jasondev group=180 keypair=dan_drown_key name=jasondev securitygroupids=239
+
+creating a volume off a snapshot
+./createVolume DATA-4824 snapshotid=37788
+
+attach a volume to a VM
+./attachVolume $VOLUMEID $VMID
+
+add an IP to a security group
+./authorizeSecurityGroupIngress cidrlist=192.0.0.0/24 startport=80 endport=80 protocol=tcp securitygroupname=secgroup

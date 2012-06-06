@@ -13,6 +13,5 @@ public class listNetworks {
     String elements[] = {"id", "name", "zoneid", "displaytext"};
 
     CLI.printDocument(network_list, "//network", elements);
-    CLI.printSomething(network_list);
   }
 }
